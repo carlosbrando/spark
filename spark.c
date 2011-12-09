@@ -64,13 +64,13 @@ int received_bash_pipe(void) {
 /* Join all parameters into a single string to enable 
  * the use of commas */
 char *join_arguments(char *arguments[], int count) {
-    register int i;
     char *buffer;
+    register int i;
     
-    buffer = malloc(sizeof(char));
+    buffer = malloc(1);
     
     for (i = 0; i < count; ++i) {
-        buffer = realloc(buffer, strlen(arguments[i]) * sizeof(char));
+        buffer = realloc(buffer, strlen(buffer) + strlen(arguments[i]));
         strcat(buffer, arguments[i]);
         strcat(buffer, " "); /* adds a space after the value */
     }
