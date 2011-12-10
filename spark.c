@@ -43,6 +43,7 @@ int main(int argc, char *argv[]) {
     for (i = 0; i < count; ++i) {
         current_value = (numerical_values[i] * 7) / max;
         if (current_value < 0) current_value = 0;
+        /* printf("%d", numerical_values[i]); */
         printf("%s", ticks[current_value]);
     }
     
@@ -54,7 +55,7 @@ int received_bash_pipe(void) {
     long size;
     
     /* obtain file size: */
-    fseek(stdin , 0 , SEEK_END);
+    fseek(stdin, 0, SEEK_END);
     size = ftell(stdin);
     rewind(stdin);
     
@@ -70,11 +71,11 @@ char *join_arguments(char *arguments[], int count) {
     buffer = malloc(1);
     
     for (i = 0; i < count; ++i) {
-        buffer = realloc(buffer, strlen(buffer) + strlen(arguments[i]));
+        buffer = realloc(buffer, strlen(buffer) + strlen(arguments[i]) + 1);
         strcat(buffer, arguments[i]);
         strcat(buffer, " "); /* adds a space after the value */
     }
-    
+
     return buffer;
 }
 
@@ -106,10 +107,10 @@ int *split_string(char *string) {
 char *remove_unwanted_characters(char *string) {
     char *buffer;
     size_t size;
-    register unsigned int i;
+    register int i;
     
     size = strlen(string);
-    buffer = malloc(size * sizeof(char));
+    buffer = malloc(size);
     
     for (i = 0; i < size; ++i) 
         buffer[i] = string[i] == '\n' || string[i] == ',' ? ' ' : string[i];
