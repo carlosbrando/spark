@@ -2,8 +2,9 @@
 #include <stdlib.h>
 #include <limits.h>
 #include <string.h>
+#include <stdbool.h>
 
-int received_bash_pipe(void);
+bool received_bash_pipe(void);
 int *split_string(char *string);
 char *remove_unwanted_characters(char *string);
 char *join_arguments(char *arguments[], int count);
@@ -43,7 +44,6 @@ int main(int argc, char *argv[]) {
     for (i = 0; i < count; ++i) {
         current_value = (numerical_values[i] * 7) / max;
         if (current_value < 0) current_value = 0;
-        /* printf("%d", numerical_values[i]); */
         printf("%s", ticks[current_value]);
     }
     
@@ -51,7 +51,7 @@ int main(int argc, char *argv[]) {
 }
 
 /* Check if values were received via bash pipe */
-int received_bash_pipe(void) {
+bool received_bash_pipe(void) {
     long size;
     
     /* obtain file size: */
@@ -59,7 +59,7 @@ int received_bash_pipe(void) {
     size = ftell(stdin);
     rewind(stdin);
     
-    return size != 0 ? 1 : 0;
+    return size != 0 ? true : false;
 }
 
 /* Join all parameters into a single string to enable 
@@ -68,10 +68,10 @@ char *join_arguments(char *arguments[], int count) {
     char *buffer;
     register int i;
     
-    buffer = malloc(1);
+    buffer = (char *)malloc(sizeof(char));
     
     for (i = 0; i < count; ++i) {
-        buffer = realloc(buffer, strlen(buffer) + strlen(arguments[i]) + 1);
+        buffer = (char *)realloc(buffer, (strlen(buffer) + strlen(arguments[i]) + 1) * sizeof(char));
         strcat(buffer, arguments[i]);
         strcat(buffer, " "); /* adds a space after the value */
     }
@@ -110,7 +110,7 @@ char *remove_unwanted_characters(char *string) {
     register int i;
     
     size = strlen(string);
-    buffer = malloc(size);
+    buffer = (char *)malloc(size * sizeof(char));
     
     for (i = 0; i < size; ++i) 
         buffer[i] = string[i] == '\n' || string[i] == ',' ? ' ' : string[i];
