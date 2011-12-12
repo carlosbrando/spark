@@ -36,7 +36,7 @@ int main(int argc, char *argv[]) {
     
     /* search for lowest and highest values */
     for (i = 0; i < count; ++i) {
-        if (numerical_values[i] < min) min = numerical_values[i]; /* retrieves the lowest value*/
+        if (numerical_values[i] < min) min = numerical_values[i]; /* retrieves the lowest value */
         if (numerical_values[i] > max) max = numerical_values[i]; /* retrieves the highest value */
     }
     
