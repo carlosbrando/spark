@@ -4,6 +4,8 @@
 #include <string.h>
 #include <stdbool.h>
 
+typedef unsigned int LOOP_COUNTER;
+
 bool received_bash_pipe(void);
 int *split_string(char *string);
 char *remove_unwanted_characters(char *string);
@@ -11,9 +13,10 @@ char *join_arguments(char *arguments[], int count);
 void print_help_message(void);
 
 int main(int argc, char *argv[]) {
+	register LOOP_COUNTER i;
     char pipe_args[4096];
     char *arguments;
-    int i, current_value, count;
+    int current_value, count;
     int min = INT_MAX, max = INT_MIN;
     int *numerical_values;
     char *ticks[] = {"▁", "▂", "▃", "▄", "▅", "▆", "▇", "█"};
@@ -65,8 +68,8 @@ bool received_bash_pipe(void) {
 /* Join all parameters into a single string to enable 
  * the use of commas */
 char *join_arguments(char *arguments[], int count) {
-    char *buffer;
-    register int i;
+    register LOOP_COUNTER i;
+	char *buffer;
     
     buffer = (char *)malloc(sizeof(char));
     
@@ -82,7 +85,7 @@ char *join_arguments(char *arguments[], int count) {
 /* Split the string into an array of integers 
  * regardless of how they were passed. */
 int *split_string(char *string) {
-    register int i = 0;
+    register LOOP_COUNTER i = 0;
     char *new_string, *p;
     int *result;
 
@@ -105,9 +108,9 @@ int *split_string(char *string) {
 
 /* Remove caracteres como vírgula e quebra de linhas */
 char *remove_unwanted_characters(char *string) {
-    char *buffer;
+    register LOOP_COUNTER i;
+	char *buffer;
     size_t size;
-    register int i;
     
     size = strlen(string);
     buffer = (char *)malloc(size * sizeof(char));
