@@ -11,7 +11,8 @@ char *remove_unwanted_characters(char *string);
 char *join_arguments(char *arguments[], int count);
 void print_help_message(void);
 
-int main(int argc, char *argv[]) {
+int main(int argc, char *argv[])
+{
     register LOOP_COUNTER i;
     char pipe_args[4096];
     char *arguments;
@@ -53,7 +54,8 @@ int main(int argc, char *argv[]) {
 }
 
 /* Check if values were received via bash pipe */
-int received_bash_pipe(void) {
+int received_bash_pipe(void)
+{
     long size;
     
     /* obtain file size: */
@@ -66,7 +68,8 @@ int received_bash_pipe(void) {
 
 /* Join all parameters into a single string to enable 
  * the use of commas */
-char *join_arguments(char *arguments[], int count) {
+char *join_arguments(char *arguments[], int count)
+{
     register LOOP_COUNTER i;
     char *buffer;
     
@@ -83,7 +86,8 @@ char *join_arguments(char *arguments[], int count) {
 
 /* Split the string into an array of integers 
  * regardless of how they were passed. */
-int *split_string(char *string) {
+int *split_string(char *string)
+{
     register LOOP_COUNTER i = 0;
     char *new_string, *p;
     int *result;
@@ -106,7 +110,8 @@ int *split_string(char *string) {
 }
 
 /* Remove caracteres como vírgula e quebra de linhas */
-char *remove_unwanted_characters(char *string) {
+char *remove_unwanted_characters(char *string)
+{
     register LOOP_COUNTER i;
     char *buffer;
     size_t size;
@@ -122,7 +127,8 @@ char *remove_unwanted_characters(char *string) {
 
 /* Print in terminal a message explaining how to use 
  * the application */
-void print_help_message(void) {
+void print_help_message(void)
+{
     printf("USAGE:\n"
            "  spark [-h] VALUE,...\n\n"
            "EXAMPLES:\n"
