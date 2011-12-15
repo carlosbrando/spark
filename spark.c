@@ -2,11 +2,10 @@
 #include <stdlib.h>
 #include <limits.h>
 #include <string.h>
-#include <stdbool.h>
 
 typedef unsigned int LOOP_COUNTER;
 
-bool received_bash_pipe(void);
+int received_bash_pipe(void);
 int *split_string(char *string);
 char *remove_unwanted_characters(char *string);
 char *join_arguments(char *arguments[], int count);
@@ -54,7 +53,7 @@ int main(int argc, char *argv[]) {
 }
 
 /* Check if values were received via bash pipe */
-bool received_bash_pipe(void) {
+int received_bash_pipe(void) {
     long size;
     
     /* obtain file size: */
@@ -62,7 +61,7 @@ bool received_bash_pipe(void) {
     size = ftell(stdin);
     rewind(stdin);
     
-    return size != 0 ? true : false;
+    return size != 0 ? 1 : 0;
 }
 
 /* Join all parameters into a single string to enable 
