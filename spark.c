@@ -69,7 +69,7 @@ bool received_bash_pipe(void) {
  * the use of commas */
 char *join_arguments(char *arguments[], int count) {
     register LOOP_COUNTER i;
-	char *buffer;
+    char *buffer;
     
     buffer = (char *)malloc(sizeof(char));
     
