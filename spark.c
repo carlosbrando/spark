@@ -13,7 +13,7 @@ char *join_arguments(char *arguments[], int count);
 void print_help_message(void);
 
 int main(int argc, char *argv[]) {
-	register LOOP_COUNTER i;
+    register LOOP_COUNTER i;
     char pipe_args[4096];
     char *arguments;
     int current_value, count;
@@ -125,12 +125,12 @@ char *remove_unwanted_characters(char *string) {
  * the application */
 void print_help_message(void) {
     printf("USAGE:\n"
-		   "  spark [-h] VALUE,...\n\n"
-		   "EXAMPLES:\n"
-		   "  spark 1 5 22 13 53\n"
-		   "  ▁▁▃▂█\n"
-		   "  spark 0,30,55,80,33,150\n"
-		   "  ▁▂▃▄▂█\n"
-		   "  echo 9 13 5 17 1 | spark\n"
-		   "  ▄▆▂█▁\n");
+           "  spark [-h] VALUE,...\n\n"
+           "EXAMPLES:\n"
+           "  spark 1 5 22 13 53\n"
+           "  ▁▁▃▂█\n"
+           "  spark 0,30,55,80,33,150\n"
+           "  ▁▂▃▄▂█\n"
+           "  echo 9 13 5 17 1 | spark\n"
+           "  ▄▆▂█▁\n");
 }
