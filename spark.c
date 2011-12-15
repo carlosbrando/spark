@@ -121,13 +121,13 @@ char *remove_unwanted_characters(char *string) {
 /* Print in terminal a message explaining how to use 
  * the application */
 void print_help_message(void) {
-    printf("USAGE:\n");
-    printf("  spark [-h] VALUE,...\n\n");
-    printf("EXAMPLES:\n");
-    printf("  spark 1 5 22 13 53\n");
-    printf("  ▁▁▃▂█\n");
-    printf("  spark 0,30,55,80,33,150\n");
-    printf("  ▁▂▃▄▂█\n");
-    printf("  echo 9 13 5 17 1 | spark\n");
-    printf("  ▄▆▂█▁\n");
+    printf("USAGE:\n"
+		   "  spark [-h] VALUE,...\n\n"
+		   "EXAMPLES:\n"
+		   "  spark 1 5 22 13 53\n"
+		   "  ▁▁▃▂█\n"
+		   "  spark 0,30,55,80,33,150\n"
+		   "  ▁▂▃▄▂█\n"
+		   "  echo 9 13 5 17 1 | spark\n"
+		   "  ▄▆▂█▁\n");
 }
