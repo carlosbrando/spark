@@ -109,7 +109,7 @@ int *split_string(char *string) {
 /* Remove caracteres como vírgula e quebra de linhas */
 char *remove_unwanted_characters(char *string) {
     register LOOP_COUNTER i;
-	char *buffer;
+    char *buffer;
     size_t size;
     
     size = strlen(string);
